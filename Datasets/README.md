@@ -2,10 +2,10 @@
 
 🍎 This is a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) dataset.
 
-💡 Note that [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE) is propose in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE), where introduced the detailed data schema.  
+💡 Note that [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) is proposed in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE), where introduced the detailed data schema.  
 
 ## Data File Structure
-The structure of data files is as follows: 
+The structure of data files (require to unzip [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) and [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) first) is as follows: 
 
 ```shell
 SPEECH
@@ -79,4 +79,3 @@ The OntoEvent-Doc dataset is stored in json format.
     }
 } 
 ```
-

@@ -1,11 +1,11 @@
 # SPEECH
 
 <p align="center">
-    <font size=4><strong>💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres</strong></font>
+    <font size=5><strong>💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres</strong></font>
 </p>
 
 
-🍎 The project is an official implementation for [**SPEECH**](https://github.com/zjunlp/SPEECH) model and a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc) dataset, which has firstly been proposed in the paper [💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres]() accepted by ACL 2023 main conference. 
+🍎 The project is an official implementation for [**SPEECH**](https://github.com/zjunlp/SPEECH) model and a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) dataset, which has firstly been proposed in the paper [💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres]() accepted by ACL 2023 main conference. 
 
 🤗 The implementations are based on [Huggingface's Transformers](https://github.com/huggingface/transformers) and also referred to [OntoED](https://github.com/231sm/Reasoning_In_EE) & [DeepKE](https://github.com/zjunlp/DeepKE). 
 
@@ -33,10 +33,10 @@ SPEECH
     │   ├── test.jsonl      # for testing
     │   └── valid.jsonl     # for validation
     └── OntoEvent-Doc 
-    │   ├── README.md 
     │   ├── event_dict_on_doc_train.json	# for training
     │   ├── event_dict_on_doc_test.json		# for testing
-    └── └── event_dict_on_doc_valid.json	# for validation
+    │   └── event_dict_on_doc_valid.json	# for validation
+    └── README.md 
 ```
 
 ## Requirements
@@ -56,7 +56,7 @@ SPEECH
 
 ## Usage
 
-**1. Project Preparation**：Download this project and unzip the dataset. You can directly download the archive, or run ```git clone https://github.com/zjunlp/SPEECH.git``` at your teminal. 
+**1. Project Preparation**: Download this project and unzip the dataset. You can directly download the archive, or run ```git clone https://github.com/zjunlp/SPEECH.git``` in your teminal. 
 
 ```
 cd [LOCAL_PROJECT_PATH]
@@ -64,7 +64,16 @@ cd [LOCAL_PROJECT_PATH]
 git clone https://github.com/zjunlp/SPEECH.git
 ```
 
-**2. Running Preparation**: Adjust the parameters in [```run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) bash file. 
+
+**2. Data Preparation**: Unzip [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) and [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) datasets stored at ```./Datasets```. 
+ 
+```
+unzip MAVEN_ERE
+unzip OntoEvent-Doc 
+```
+
+
+**3. Running Preparation**: Adjust the parameters in [```run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) bash file. 
 
 ```
 vim run_speech.sh
@@ -73,7 +82,8 @@ vim run_speech.sh
 **Hint**:  
 - Please refer to ```main()``` function in [```run_speech.py```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.py) file for detail meanings of each parameters. 
 
-**3. Running Model**: Run [```./run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) for *training*, *validation*, and *testing*.  
+
+**4. Running Model**: Run [```./run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) for *training*, *validation*, and *testing*.  
 
 ```
 ./run_speech.sh
@@ -87,11 +97,12 @@ python run_speech.py --para...
 
 
 ## How about the Dataset
-[**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE) is propose in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE).
-[**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc), formatted in document level, is derived from [OntoEvent](https://github.com/231sm/Reasoning_In_EE/tree/main/OntoEvent) which is formatted in sentence level.  
+[**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) is propose in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE).
+
+[**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip), formatted in document level, is derived from [OntoEvent](https://github.com/231sm/Reasoning_In_EE/tree/main/OntoEvent) which is formatted in sentence level.  
 
 ### Statistics
-The statistics of *MAVEN-ERE* and *OntoEvent-Doc* are shown below, and the detailed data schema can be referred to [```./Datasets/README.md```]. 
+The statistics of ***MAVEN-ERE*** and ***OntoEvent-Doc*** are shown below, and the detailed data schema can be referred to [```./Datasets/README.md```]. 
 
 Dataset         | #Document | #Mention | #Temporal | #Causal | #Subevent |
 | :----------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |

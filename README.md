@@ -77,7 +77,7 @@ unzip OntoEvent-Doc
 
 ```
 vim run_speech.sh
-(input the parameters, save and quit)
+// input the parameters, save and quit
 ```
 **Hint**:  
 - Please refer to ```main()``` function in [```run_speech.py```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.py) file for detail meanings of each parameters. 
@@ -88,7 +88,7 @@ vim run_speech.sh
 ```
 ./run_speech.sh
 
-Or you can run run_speech.py with manual parameter input in the terminal.
+// Or you can run run_speech.py with manual parameter input in the terminal.
 
 python run_speech.py --para... 
 ```
@@ -97,7 +97,7 @@ python run_speech.py --para...
 
 
 ## How about the Dataset
-[**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) is propose in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE).
+[**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) is proposed in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE).
 
 [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip), formatted in document level, is derived from [OntoEvent](https://github.com/231sm/Reasoning_In_EE/tree/main/OntoEvent) which is formatted in sentence level.  
 

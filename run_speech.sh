@@ -1,0 +1,24 @@
+python3 run_ears.py \
+    --data_dir ./Datasets/OntoEvent-Doc \
+    --model_type speech_bert \
+    --model_name_or_path bert-base-uncased \
+    --task_name ontoevent-doc \
+    --central_task token \
+    --ere_task_type doc_all \
+    --output_dir ./history_model/ \
+    --max_seq_length 128 \
+    --max_mention_size 100 \
+    --do_lower_case \
+    --per_gpu_train_batch_size 42 \
+    --per_gpu_eval_batch_size 42 \
+    --gradient_accumulation_steps 3 \
+    --learning_rate 5e-5 \
+    --num_train_epochs 5 \
+    --save_steps 500 \
+    --logging_steps 500 \
+    --seed 42 \
+    --do_train \
+    --do_eval \
+    --do_test \
+    --evaluate_during_training \
+    --overwrite_output_dir

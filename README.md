@@ -80,7 +80,11 @@ vim run_speech.sh
 # input the parameters, save and quit
 ```
 **Hint**:  
-- Please refer to ```main()``` function in [```run_speech.py```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.py) file for detail meanings of each parameters. 
+- Please refer to ```main()``` function in [```run_speech.py```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.py) file for detail meanings of each parameters.
+- Pay attention to ```--ere_task_type``` parameter candidates:  
+    - "doc_all" is for "All Joint" experiments in the paper 
+    - "doc_joint" is for each ERE subtask "+joint" experiments in the paper
+    - "doc_temporal/causal/sub" is for each ERE subtask experiments only 
 
 
 **4. Running Model**: Run [```./run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) for *training*, *validation*, and *testing*.  

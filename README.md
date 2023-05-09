@@ -61,7 +61,7 @@ SPEECH
 ```
 cd [LOCAL_PROJECT_PATH]
 
-git clone https://github.com/zjunlp/SPEECH.git
+git clone git@github.com:zjunlp/SPEECH.git
 ```
 
 

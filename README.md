@@ -32,7 +32,7 @@ SPEECH
     │   ├── train.jsonl     # for training
     │   ├── test.jsonl      # for testing
     │   └── valid.jsonl     # for validation
-    └── OntoEvent-Doc 
+    ├── OntoEvent-Doc 
     │   ├── event_dict_on_doc_train.json	# for training
     │   ├── event_dict_on_doc_test.json		# for testing
     │   └── event_dict_on_doc_valid.json	# for validation

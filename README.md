@@ -23,10 +23,10 @@ The structure of data and code is as follows:
 ```shell
 SPEECH
 ├── README.md
-├── data_utils.py		# for data processing
-├── speech.py			# main model
-├── run_speech.py		# for model running
-├── run_speech.sh		# bash file for model running 
+├── data_utils.py   # for data processing
+├── speech.py		# main model
+├── run_speech.py	# for model running
+├── run_speech.sh	# bash file for model running 
 └── Datasets		    # data
     ├── MAVEN_ERE   
     │   ├── train.jsonl     # for training
@@ -77,7 +77,7 @@ unzip OntoEvent-Doc
 
 ```
 vim run_speech.sh
-// input the parameters, save and quit
+# input the parameters, save and quit
 ```
 **Hint**:  
 - Please refer to ```main()``` function in [```run_speech.py```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.py) file for detail meanings of each parameters. 
@@ -88,7 +88,7 @@ vim run_speech.sh
 ```
 ./run_speech.sh
 
-// Or you can run run_speech.py with manual parameter input in the terminal.
+# Or you can run run_speech.py with manual parameter input in the terminal.
 
 python run_speech.py --para... 
 ```

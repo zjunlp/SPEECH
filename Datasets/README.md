@@ -43,7 +43,7 @@ The data schema of MAVEN-ERE can be referred to their [GitHub](https://github.co
 
 The OntoEvent-Doc dataset is stored in json format.
 
-🍒Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
+🍒 Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
 
 ```
 [a doc_id]:

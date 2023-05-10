@@ -59,7 +59,8 @@ SPEECH
 
 ## Usage 🛠️
 
-**1. Project Preparation**: 
+**1. Project Preparation**:
+
 Download this project and unzip the dataset. You can directly download the archive, or run ```git clone https://github.com/zjunlp/SPEECH.git``` in your teminal. 
 
 ```
@@ -70,6 +71,7 @@ git clone git@github.com:zjunlp/SPEECH.git
 
 
 **2. Data Preparation**: 
+
 Unzip [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) and [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) datasets stored at ```./Datasets```. 
  
 ```
@@ -80,7 +82,8 @@ cd ..
 ```
 
 
-**3. Running Preparation**: 
+**3. Running Preparation**:
+
 Install all required packages.  
 Adjust the parameters in [```run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) bash file. 
 
@@ -97,7 +100,8 @@ vim run_speech.sh
     - "doc_temporal"/"doc_causal/"doc_sub" is for each ERE subtask experiments only 
 
 
-**4. Running Model**: 
+**4. Running Model**:
+ 
 Run [```./run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) for *training*, *validation*, and *testing*.  
 
 ```

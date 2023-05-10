@@ -57,13 +57,13 @@ class SPEECH(BertPreTrainedModel): # BertPreTrainedModel, RobertaPreTrainedModel
         print("self.ratio_loss_sent", self.ratio_loss_sent)
         print("self.ratio_loss_doc_plus", self.ratio_loss_doc_plus)
         print("self.ratio_loss_doc", self.ratio_loss_doc)
-        print("self.aggr", self.aggr)
-        print("ENERGY_WEIGHT", ENERGY_WEIGHT) 
-        print("SPC_TOKEN_WEIGHT", SPC_TOKEN_WEIGHT)
-        print("NA_REL_WEIGHT", NA_REL_WEIGHT)
-        print("NA_REL_WEIGHT_SUB", NA_REL_WEIGHT_SUB) 
-        print("NA_REL_WEIGHT_CAUSAL", NA_REL_WEIGHT_CAUSAL) 
-        print("NA_REL_WEIGHT_TEMP", NA_REL_WEIGHT_TEMP)  
+        # print("self.aggr", self.aggr)
+        # print("ENERGY_WEIGHT", ENERGY_WEIGHT) 
+        # print("SPC_TOKEN_WEIGHT", SPC_TOKEN_WEIGHT)
+        # print("NA_REL_WEIGHT", NA_REL_WEIGHT)
+        # print("NA_REL_WEIGHT_SUB", NA_REL_WEIGHT_SUB) 
+        # print("NA_REL_WEIGHT_CAUSAL", NA_REL_WEIGHT_CAUSAL) 
+        # print("NA_REL_WEIGHT_TEMP", NA_REL_WEIGHT_TEMP)  
         # classes of subtasks
         self.token = Token(self.num_labels4token, config.hidden_size, self.hidden_dropout_prob, self.ratio_loss_token_plus)
         self.sent = Sentence(self.num_labels4sent, config.hidden_size, self.hidden_dropout_prob, self.ratio_loss_sent_plus) 
@@ -221,11 +221,6 @@ class Token(nn.Module):
         seq_length = token_y.size(1)
         for i in range(seq_length-1):
             token_label_energy = torch.sum(torch.matmul(torch.matmul(token_y[:, i, :], self.get_para_vec_mat("mat_label")), token_y[:, i+1, :].transpose(0, 1)))
-        # token_local_energy /= seq_length
-        # token_label_energy = 0
-        # for k in range(batch_size):
-        #     for i in range(seq_length-1):
-        #         token_label_energy += torch.matmul(torch.matmul(token_y[k, i, :], self.get_para_vec_mat("mat_label")), token_y[k, i+1, :]) 
         token_energy = token_local_energy + token_label_energy
         return token_energy
     
@@ -286,12 +281,6 @@ class Token(nn.Module):
             else:
                 logits_token_valid = logits_token
                 token_labels_real_valid = token_labels_real 
-            # weight_tensor = torch.ones([self.tokentype_size]).to(device)
-            # # weight_tensor[0] = SPC_TOKEN_WEIGHT
-            # # weight_tensor[-2] = SPC_TOKEN_WEIGHT
-            # weight_tensor[-1] = SPC_TOKEN_WEIGHT
-            # weight_tensor = weight_tensor / torch.sum(weight_tensor) 
-            # loss_fct = CrossEntropyLoss(weight=weight_tensor, ignore_index=pad_token_label_id[0].item())
             loss_fct = CrossEntropyLoss(ignore_index=pad_token_label_id[0].item())
             loss_token_plus = loss_fct(logits_token.view(-1, self.tokentype_size), token_labels_real.view(-1))
             loss_token = ENERGY_WEIGHT*loss_token_energy + self.ratio_loss_token_plus * loss_token_plus 
@@ -390,15 +379,9 @@ class Sentence(nn.Module):
             loss_sent_hinge = loss_hinge(logits_sent.view(-1, self.proto_size), sent_labels_real.view(-1))    
             label_vec = self.label2vec(sent_labels_real, self.proto_size) 
             loss_sent_energy = torch.max( torch.tensor([0, loss_sent_hinge + self.sent_energy_function(sent_embed_real, label_vec) - self.sent_energy_function(sent_embed_real, logits_sent)], dtype=torch.float) )
-            # weight_tensor = torch.ones([self.proto_size]).to(device)
-            # weight_tensor[0] = 0.1 
-            # weight_tensor = weight_tensor / torch.sum(weight_tensor)  
-            # loss_fct = CrossEntropyLoss(weight=weight_tensor) # , ignore_index=0
             loss_fct = CrossEntropyLoss()
             loss_sent_plus = loss_fct(logits_sent.view(-1, self.proto_size), sent_labels_real.view(-1))
             loss_sent = ENERGY_WEIGHT*loss_sent_energy + self.ratio_loss_sent_plus * loss_sent_plus
-        # else:
-        #     loss_sent = 0
         
         return loss_sent, logits_sent, sent_labels_real, proto_embed
     
@@ -506,7 +489,7 @@ class Document(nn.Module):
         if doc_ere_task_type == "doc_all":
             return inputs_sentpair, labels_sentpair
         else:
-            if task_name == "ontoevent":
+            if task_name == "ontoevent-doc":
                 labels_sentpair_temporal, labels_sentpair_causal, labels_sentpair_sub = self.labels_sentpair_rebuilt(labels_sentpair, task_name)
                 return inputs_sentpair, labels_sentpair_temporal, labels_sentpair_causal, labels_sentpair_sub  
             elif task_name == "maven-ere":
@@ -544,7 +527,7 @@ class Document(nn.Module):
 
             return labels_sentpair_temporal, labels_sentpair_causal, labels_sentpair_sub, labels_sentpair_corref 
         
-        elif task_name == "ontoevent":
+        elif task_name == "ontoevent-doc":
             for i in range(label_size):
                 label = labels_sentpair[i].item() 
                 if label not in list(range(1, 4)):
@@ -568,13 +551,13 @@ class Document(nn.Module):
             loss_doc_hinge = loss_hinge(logits_ere.view(-1, relation_size), labels_ere.view(-1))
             label_vec = self.label2vec(labels_ere, relation_size)
             loss_doc_energy = torch.max( torch.tensor([0, loss_doc_hinge + self.doc_energy_function(sentpair_emb, label_vec, list_ids) - self.doc_energy_function(sentpair_emb, logits_ere, list_ids)], dtype=torch.float) )
-            if doc_ere_task_type == "doc_all" or (task_name == "ontoevent" and doc_ere_task_type != "doc_causal"):
+            if doc_ere_task_type == "doc_all" or (task_name == "ontoevent-doc" and doc_ere_task_type != "doc_causal"):
                 weight_tensor = torch.ones([relation_size]).to(device)
                 weight_tensor[0] = NA_REL_WEIGHT # as there are too many NA relations, we should decrease their weight in loss and focus more on valid labels' training 
                 weight_tensor = weight_tensor / torch.sum(weight_tensor) 
                 loss_fct = CrossEntropyLoss(weight=weight_tensor) # , ignore_index=0
                 # loss_fct = CrossEntropyLoss()
-            elif task_name == "ontoevent" and doc_ere_task_type == "doc_causal": 
+            elif task_name == "ontoevent-doc" and doc_ere_task_type == "doc_causal": 
                 weight_tensor = torch.ones([relation_size]).to(device)
                 weight_tensor[0] = NA_REL_WEIGHT / 2
                 weight_tensor = weight_tensor / torch.sum(weight_tensor) 
@@ -646,7 +629,7 @@ class Document(nn.Module):
                 loss_doc_corref = self.calculate_ere_loss(logits_sentpair_corref, labels_sentpair_corref, inputs_sentpair, size_corref, label_corref_ids, task_name, "doc_corref")                
                 loss_doc_joint = ratio_temp*loss_doc_temp + ratio_causal*loss_doc_causal + ratio_sub*loss_doc_sub + ratio_corref*loss_doc_corref
                 return loss_doc_joint, logits_sentpair_temp, labels_sentpair_temporal, logits_sentpair_causal, labels_sentpair_causal, logits_sentpair_sub, labels_sentpair_sub, logits_sentpair_corref, labels_sentpair_corref
-        elif task_name == "ontoevent":
+        elif task_name == "ontoevent-doc":
             ratio_temp = 3
             ratio_causal = 1
             ratio_sub = 0

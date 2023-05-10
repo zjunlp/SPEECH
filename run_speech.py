@@ -661,21 +661,21 @@ def main():
         type=str,
         required=True,
         help="Model type selected in the list: " + ", ".join(MODEL_CLASSES.keys()),
-    )
+    ) # "speech_bert, speech_roberta, speech_distilbert"
     parser.add_argument(
         "--model_name_or_path",
         default=None,
         type=str,
         required=True,
         help="Path to pre-trained model or shortcut name selected in the list: " + ", ".join(ALL_MODELS),
-    )
+    ) # "bert-base-uncased, roberta-base, distilbert-base-uncased"
     parser.add_argument(
         "--task_name",
         default=None,
         type=str,
         required=True,
         help="The name of the task to train selected in the list: " + ", ".join(processors.keys()),
-    )
+    ) # "ontoevent-doc, maven-ere"
     parser.add_argument(
         "--central_task",
         default=None,
@@ -683,7 +683,7 @@ def main():
         required=True,
         help="The central task for optimization: " + 
             "token, " + "sent, " + "doc",
-    )
+    ) # "token, sent, doc"
     parser.add_argument(
         "--ere_task_type",
         default=None,

@@ -24,8 +24,8 @@ The structure of data and code is as follows:
 SPEECH
 ├── README.md
 ├── data_utils.py   # for data processing
-├── speech.py		# main model  (bert serves as the backbone)
-├── speech_distilbert.py		# main model (distilbert serves as the backbone)
+├── speech.py		        # main model (bert serves as the backbone)
+├── speech_distilbert.py	# main model (distilbert serves as the backbone)
 ├── speech_roberta.py		# main model (roberta serves as the backbone)
 ├── run_speech.py	# for model running
 ├── run_speech.sh	# bash file for model running 

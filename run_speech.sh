@@ -42,7 +42,7 @@ python3 run_speech.py \
     --per_gpu_eval_batch_size 1 \
     --gradient_accumulation_steps 4 \
     --learning_rate 5e-5 \
-    --num_train_epochs 40 \
+    --num_train_epochs 100 \
     --save_steps 500 \
     --logging_steps 500 \
     --seed 42 \
@@ -205,7 +205,7 @@ python3 run_speech.py \
     --per_gpu_eval_batch_size 1 \
     --gradient_accumulation_steps 4 \
     --learning_rate 5e-5 \
-    --num_train_epochs 40 \
+    --num_train_epochs 100 \
     --save_steps 500 \
     --logging_steps 500 \
     --seed 42 \

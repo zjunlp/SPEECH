@@ -1,7 +1,7 @@
-# SPEECH
+# SPEECH 🚀
 
 <p align="center">
-    <font size=5><strong>💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres</strong></font>
+    <font size=6><strong>💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres</strong></font>
 </p>
 
 
@@ -12,12 +12,12 @@
 🤗 The baseline implementations are reproduced with codes referred to [MAVEN's baselines](https://github.com/THU-KEG/MAVEN-dataset/) or with official implementation. 
 
 
-## Brief Introduction
+## Brief Introduction 📣
 SPEECH is proposed to address event-centric structured prediction with energy-based hyperspheres.  
 SPEECH models complex dependency among event structured components with energy-based modeling, and represents event classes with simple but effective hyperspheres.
 
 
-## Project Structure
+## Project Structure 🔍 
 The structure of data and code is as follows: 
 
 ```shell
@@ -39,7 +39,7 @@ SPEECH
     └── README.md 
 ```
 
-## Requirements
+## Requirements 📦
 
 - python==3.9.12
 
@@ -54,14 +54,14 @@ SPEECH
 - sentencepiece==0.1.97
 
 
-## Usage
+## Usage 🛠️
 
 **1. Project Preparation**: Download this project and unzip the dataset. You can directly download the archive, or run ```git clone https://github.com/zjunlp/SPEECH.git``` in your teminal. 
 
 ```
 cd [LOCAL_PROJECT_PATH]
 
-git clone git@github.com:zjunlp/SPEECH.git
+git clone git@github.com:zjunlp/SPEECH.git 
 ```
 
 
@@ -84,7 +84,7 @@ vim run_speech.sh
 - Pay attention to ```--ere_task_type``` parameter candidates:  
     - "doc_all" is for "All Joint" experiments in the paper 
     - "doc_joint" is for each ERE subtask "+joint" experiments in the paper
-    - "doc_temporal/causal/sub" is for each ERE subtask experiments only 
+    - "doc_temporal"/"doc_causal/"doc_sub" is for each ERE subtask experiments only 
 
 
 **4. Running Model**: Run [```./run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) for *training*, *validation*, and *testing*.  
@@ -100,7 +100,7 @@ python run_speech.py --para...
 - A folder of model checkpoints will be saved at the path you input ('--output_dir') in the bash file [```run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) or the command line in the  terminal. 
 
 
-## How about the Dataset
+## How about the Dataset 🗃️
 [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) is proposed in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE).
 
 [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip), formatted in document level, is derived from [OntoEvent](https://github.com/231sm/Reasoning_In_EE/tree/main/OntoEvent) which is formatted in sentence level.  
@@ -118,7 +118,7 @@ The data schema of MAVEN-ERE can be referred to their [GitHub](https://github.co
 
 The OntoEvent-Doc dataset is stored in json format.
 
-🍒Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
+🍒 Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
 
 ```
 [a doc_id]:
@@ -160,7 +160,7 @@ The OntoEvent-Doc dataset is stored in json format.
 ```
 
 
-## How to Cite
+## How to Cite 📝
 📋 Thank you very much for your interest in our work. If you use or extend our work, please cite the following paper:
 
 ```bibtex

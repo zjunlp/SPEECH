@@ -47,9 +47,9 @@ class SPEECH(BertPreTrainedModel): # BertPreTrainedModel, RobertaPreTrainedModel
         self.ratio_loss_token_plus = 1 # \mu_1
         self.ratio_loss_token = 1 # \lambda_1
         self.ratio_loss_sent_plus = 1 # \mu_2 
-        self.ratio_loss_sent = 1 # \lambda_2
+        self.ratio_loss_sent = 0.1 # \lambda_2
         self.ratio_loss_doc_plus = 1 # \mu_3 
-        self.ratio_loss_doc = 1 # \lambda_3
+        self.ratio_loss_doc = 0.1 # \lambda_3
         print("*"*20, "Speech", "*"*20)
         print("self.ratio_loss_token_plus", self.ratio_loss_token_plus)
         print("self.ratio_loss_token", self.ratio_loss_token)

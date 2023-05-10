@@ -690,7 +690,10 @@ def main():
         type=str,
         required=True,
         help="The type of doc ere task to train selected in the list: " + 
-            "doc_all, " + "doc_joint, " + "doc_temporal, " +  "doc_causal, " +  "doc_sub, " +  "doc_corref",
+            "doc_all, " + "doc_joint, " + "doc_temporal, " +  "doc_causal, " +  "doc_sub, " +  "doc_corref" + 
+            "doc_all: for \"All Joint\" in the paper; " + 
+            "doc_joint: for each ERE subtask +joint; " + 
+            "doc_temporal/doc_causal/doc_sub: for each ERE subtask only",
     )
     parser.add_argument(
         "--output_dir",

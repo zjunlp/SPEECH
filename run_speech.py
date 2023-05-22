@@ -733,7 +733,8 @@ def main():
     )
     parser.add_argument("--do_train", action="store_true", help="Whether to run training.")
     parser.add_argument("--do_eval", action="store_true", help="Whether to run eval on the valid set.")
-    parser.add_argument("--do_test", action="store_true", help="Whether to run test on the test set")
+    parser.add_argument("--do_test", action="store_true", help="Whether to run test on the test set") 
+    # Note that for maven-ere datasets, we only evaluate on the valid set, thus "--do_test" should be dismissed for experiments on maven-ere 
     parser.add_argument(
         "--evaluate_during_training", action="store_true", help="Run evaluation during training at each logging step."
     )

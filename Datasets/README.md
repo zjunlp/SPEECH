@@ -37,55 +37,18 @@ OntoEvent-Doc    | 4,115 | 60,546 | 5,914 | 14,155 | / |
 
 ## Data Format 🔍
 The data schema of MAVEN-ERE can be referred to their [GitHub](https://github.com/THU-KEG/MAVEN-ERE). 
+Experiments on MAVEN-ERE in our paper involve:  
+- 6 temporal relations: BEFORE, OVERLAP, CONTAINS, SIMULTANEOUS, BEGINS-ON, ENDS-ON
+- 2 causal relations: CAUSE, PRECONDITION 
+- 1 subevent relation: subevent\_relations
 
-The OntoEvent-Doc dataset is stored in json format.
+Experiments on OntoEvent-Doc in our paper involve:  
+- 3 temporal relations: BEFORE, AFTER, EQUAL 
+- 2 causal relations: CAUSE, CAUSEDBY
 
-🍒 Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
+We also add a NA relation to signify no relation between the event mention pair for the two datasets. 
 
-```
-[a doc_id]:
-{
-    "events": [
-    {
-        'doc_id': '...', 
-        'doc_title': 'XXX', 
-        'sent_id': , 
-        'event_mention': '......', 
-        'event_mention_tokens': ['.', '.', '.', '.', '.', '.'], 
-        'trigger': '...', 
-        'trigger_pos': [, ], 
-        'event_type': ''
-    },
-    {
-        'doc_id': '...', 
-        'doc_title': 'XXX', 
-        'sent_id': , 
-        'event_mention': '......', 
-        'event_mention_tokens': ['.', '.', '.', '.', '.', '.'], 
-        'trigger': '...', 
-        'trigger_pos': [, ], 
-        'event_type': ''
-    },
-    ... 
-    ],
-    "relations": { // each event-relation contains a list of 'sent_id' pairs.  
-        "COSUPER": [[,], [,], [,]], 
-        "SUBSUPER": [], 
-        "SUPERSUB": [], 
-        "CAUSE": [[,], [,]], 
-        "BEFORE": [[,], [,]], 
-        "AFTER": [[,], [,]], 
-        "CAUSEDBY": [[,], [,]], 
-        "EQUAL": [[,], [,]]
-    }
-} 
-```
-
-💡 Note that [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) is proposed in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE), where introduced the detailed data schema.  
-
-The OntoEvent-Doc dataset is stored in json format.
-
-🍒 Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
+🍒 The OntoEvent-Doc dataset is stored in json format. Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
 
 ```
 [a doc_id]:

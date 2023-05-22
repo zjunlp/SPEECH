@@ -22,10 +22,6 @@ dict_num_sent2rel = {103: len(relation_map_ontoevent), 171: len(relation_map_mav
 ENERGY_WEIGHT = 1
 SPC_TOKEN_WEIGHT = 0.1
 NA_REL_WEIGHT = 0.1
-# # OK for temp and good for sub
-# NA_REL_WEIGHT_TEMP = 0.2
-# NA_REL_WEIGHT_CAUSAL = 0.08
-# NA_REL_WEIGHT_SUB = 0.01
 NA_REL_WEIGHT_TEMP = 0.3
 NA_REL_WEIGHT_CAUSAL = 0.02
 NA_REL_WEIGHT_SUB = 0.01
@@ -45,7 +41,7 @@ class SPEECH_DistilBert(DistilBertPreTrainedModel): # BertPreTrainedModel, Rober
         self.aggr = "task_based" # task_based, mean, max, max_pooling
         # some hyperparameters
         self.ratio_loss_token_plus = 1 # \mu_1
-        self.ratio_loss_token = 10 # \lambda_1
+        self.ratio_loss_token = 1 # \lambda_1
         self.ratio_loss_sent_plus = 1 # \mu_2 
         self.ratio_loss_sent = 0.1 # \lambda_2
         self.ratio_loss_doc_plus = 1 # \mu_3 
@@ -57,13 +53,12 @@ class SPEECH_DistilBert(DistilBertPreTrainedModel): # BertPreTrainedModel, Rober
         print("self.ratio_loss_sent", self.ratio_loss_sent)
         print("self.ratio_loss_doc_plus", self.ratio_loss_doc_plus)
         print("self.ratio_loss_doc", self.ratio_loss_doc)
-        # print("self.aggr", self.aggr)
-        # print("ENERGY_WEIGHT", ENERGY_WEIGHT) 
-        # print("SPC_TOKEN_WEIGHT", SPC_TOKEN_WEIGHT)
-        # print("NA_REL_WEIGHT", NA_REL_WEIGHT)
-        # print("NA_REL_WEIGHT_SUB", NA_REL_WEIGHT_SUB) 
-        # print("NA_REL_WEIGHT_CAUSAL", NA_REL_WEIGHT_CAUSAL) 
-        # print("NA_REL_WEIGHT_TEMP", NA_REL_WEIGHT_TEMP)  
+        # For Event Trigger Classification on OntoEvent-Doc dataset: \lambda_1, \lambda_2, \lambda_3 --> 1, 0.1, 0.1
+        # For Event Classification on OntoEvent-Doc dataset: \lambda_1, \lambda_2, \lambda_3 --> 0.1, 1, 0.1
+        # For Event-Relation Extraction on OntoEvent-Doc dataset: \lambda_1, \lambda_2, \lambda_3 --> 1, 0.1, 0.1
+        # For Event Trigger Classification on Maven-Ere dataset: \lambda_1, \lambda_2, \lambda_3 --> 1, 0.1, 0.1
+        # For Event Classification on Maven-Ere dataset: \lambda_1, \lambda_2, \lambda_3 --> 1, 0.1, 0.1
+        # For Event-Relation Extraction on Maven-Ere dataset: \lambda_1, \lambda_2, \lambda_3 --> 0.1, 0.1, 1 for doc_all; 1, 1, 4 for doc_joint; 1, 0.1, 0.1 for doc_temporal & doc_causal; 1, 0.1, 0.08 for doc_sub 
         # classes of subtasks
         self.token = Token(self.num_labels4token, config.hidden_size, self.hidden_dropout_prob, self.ratio_loss_token_plus)
         self.sent = Sentence(self.num_labels4sent, config.hidden_size, self.hidden_dropout_prob, self.ratio_loss_sent_plus) 

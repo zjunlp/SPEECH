@@ -26,7 +26,6 @@ SPEECH
 ├── data_utils.py   # for data processing
 ├── speech.py		        # main model (bert serves as the backbone)
 ├── speech_distilbert.py	# main model (distilbert serves as the backbone)
-├── speech_roberta.py		# main model (roberta serves as the backbone)
 ├── run_speech.py	# for model running
 ├── run_speech.sh	# bash file for model running 
 └── Datasets		    # data
@@ -98,6 +97,8 @@ vim run_speech.sh
     - "doc_all" is for "All Joint" experiments in the paper 
     - "doc_joint" is for each ERE subtask "+joint" experiments in the paper
     - "doc_temporal"/"doc_causal/"doc_sub" is for each ERE subtask experiments only 
+- Note that the loss ratio λ1, λ2, λ3, for trigger classification, event classification and event-relation extraction depends on different tasks, please ensure a correct setting of these ratios, referring to line 56-61 in [```speech.py```](https://github.com/zjunlp/SPEECH/tree/main/speech.py) and [```speech_distilbert.py```](https://github.com/zjunlp/SPEECH/tree/main/speech_distilbert.py) file for details. We also present the loss ratio setting in Appendix B in our paper.  
+
 
 
 **4. Running Model**:
@@ -111,14 +112,17 @@ Run [```./run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speec
 
 python run_speech.py --para... 
 ```
-**Hint**: 
-- A folder of model checkpoints will be saved at the path you input ('--output_dir') in the bash file [```run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) or the command line in the  terminal. 
+**Hint**:  
+- A folder of model checkpoints will be saved at the path you input (```--output_dir```) in the bash file [```run_speech.sh```](https://github.com/zjunlp/SPEECH/tree/main/run_speech.sh) or the command line in the terminal. 
+- We also release the [checkpoints](https://drive.google.com/drive/folders/18gFW_m02pgiGV2piktS308w41iBRZeN2?usp=sharing) for direct testing (Dismiss ```--do_train``` in the parameter input)
 
 
 ## How about the Dataset 🗃️
+We briefly introduce the datasets in Section 4.1 and Appendix A in our paper. 
+
 [**MAVEN_ERE**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/MAVEN_ERE.zip) is proposed in a [paper](https://aclanthology.org/2022.emnlp-main.60) and released in [GitHub](https://github.com/THU-KEG/MAVEN-ERE).
 
-[**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip), formatted in document level, is derived from [OntoEvent](https://github.com/231sm/Reasoning_In_EE/tree/main/OntoEvent) which is formatted in sentence level.  
+[**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip), formatted in document level, is derived from [OntoEvent](https://github.com/231sm/Reasoning_In_EE/tree/main/OntoEvent) which is formatted in sentence level. 
 
 ### Statistics
 The statistics of ***MAVEN-ERE*** and ***OntoEvent-Doc*** are shown below, and the detailed data schema can be referred to [```./Datasets/README.md```]. 
@@ -130,10 +134,18 @@ OntoEvent-Doc    | 4,115 | 60,546 | 5,914 | 14,155 | / |
 
 ### Data Format
 The data schema of MAVEN-ERE can be referred to their [GitHub](https://github.com/THU-KEG/MAVEN-ERE). 
+Experiments on MAVEN-ERE in our paper involve:  
+- 6 temporal relations: BEFORE, OVERLAP, CONTAINS, SIMULTANEOUS, BEGINS-ON, ENDS-ON
+- 2 causal relations: CAUSE, PRECONDITION 
+- 1 subevent relation: subevent\_relations
 
-The OntoEvent-Doc dataset is stored in json format.
+Experiments on OntoEvent-Doc in our paper involve:  
+- 3 temporal relations: BEFORE, AFTER, EQUAL 
+- 2 causal relations: CAUSE, CAUSEDBY
 
-🍒 Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
+We also add a NA relation to signify no relation between the event mention pair for the two datasets. 
+
+🍒 The OntoEvent-Doc dataset is stored in json format. Each *document* (specialized with a *doc_id*, e.g., 95dd35ce7dd6d377c963447eef47c66c) in OntoEvent-Doc datasets contains a list of "events" and a dictionary of "relations", where the data format is as below:
 
 ```
 [a doc_id]:

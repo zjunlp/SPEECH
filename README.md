@@ -5,7 +5,7 @@
 </p>
 
 
-🍎 The project is an official implementation for [**SPEECH**](https://github.com/zjunlp/SPEECH) model and a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) dataset, which has firstly been proposed in the paper [💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres]() accepted by ACL 2023 main conference. 
+🍎 The project is an official implementation for [**SPEECH**](https://github.com/zjunlp/SPEECH) model and a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) dataset, which has firstly been proposed in the paper [💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres](https://arxiv.org/abs/2305.13617) accepted by ACL 2023 main conference. 
 
 🤗 The implementations are based on [Huggingface's Transformers](https://github.com/huggingface/transformers) and also referred to [OntoED](https://github.com/231sm/Reasoning_In_EE) & [DeepKE](https://github.com/zjunlp/DeepKE). 
 

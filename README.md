@@ -199,8 +199,8 @@ We also add a NA relation to signify no relation between the event mention pair 
   title       = {SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres},
   booktitle   = {Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)},
   publisher   = {Association for Computational Linguistics},
-  pages       = {}
+  pages       = {},
   year        = {2023},
-  url         = {}
+  url         = {https://arxiv.org/abs/2305.13617}
 }
 ```

@@ -23,6 +23,7 @@ The structure of data and code is as follows:
 ```shell
 SPEECH
 ├── README.md
+├── requirements.txt    # for package requirements
 ├── data_utils.py   # for data processing
 ├── speech.py		        # main model (bert serves as the backbone)
 ├── speech_distilbert.py	# main model (distilbert serves as the backbone)

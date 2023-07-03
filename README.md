@@ -7,6 +7,8 @@
 
 🍎 The project is an official implementation for [**SPEECH**](https://github.com/zjunlp/SPEECH) model and a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) dataset, which has firstly been proposed in the paper [💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres](https://arxiv.org/abs/2305.13617) accepted by ACL 2023 main conference. 
 
+🖥️ We also release the [poster](https://github.com/zjunlp/SPEECH/tree/main/ACL2023@Poster_Speech.pdf) and [slides](https://github.com/zjunlp/SPEECH/tree/main/ACL2023@Slides_Speech.pdf) for better understanding of this paper. 
+
 🤗 The implementations are based on [Huggingface's Transformers](https://github.com/huggingface/transformers) and also referred to [OntoED](https://github.com/231sm/Reasoning_In_EE) & [DeepKE](https://github.com/zjunlp/DeepKE). 
 
 🤗 The baseline implementations are reproduced with codes referred to [MAVEN's baselines](https://github.com/THU-KEG/MAVEN-dataset/) or with official implementation. 
@@ -17,14 +19,16 @@ SPEECH is proposed to address event-centric structured prediction with energy-ba
 SPEECH models complex dependency among event structured components with energy-based modeling, and represents event classes with simple but effective hyperspheres.
 
 
-## Project Structure 🔍 
+## Project Structure 🔍
 The structure of data and code is as follows: 
 
 ```shell
 SPEECH
 ├── README.md
+├── ACL2023@Poster_Speech.pdf
+├── ACL2023@Slides_Speech.pdf
 ├── requirements.txt    # for package requirements
-├── data_utils.py   # for data processing
+├── data_utils.py       # for data processing
 ├── speech.py		        # main model (bert serves as the backbone)
 ├── speech_distilbert.py	# main model (distilbert serves as the backbone)
 ├── run_speech.py	# for model running

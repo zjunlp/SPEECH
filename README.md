@@ -31,6 +31,7 @@ SPEECH
 ├── data_utils.py       # for data processing
 ├── speech.py		        # main model (bert serves as the backbone)
 ├── speech_distilbert.py	# main model (distilbert serves as the backbone)
+├── speech_roberta.py    # toy model  (roberta serves as the backbone, not adopted in the paper, just for reference)
 ├── run_speech.py	# for model running
 ├── run_speech.sh	# bash file for model running 
 └── Datasets		    # data
@@ -39,7 +40,7 @@ SPEECH
     │   ├── test.jsonl      # for testing
     │   └── valid.jsonl     # for validation
     ├── OntoEvent-Doc
-    │   ├── event_dict_label_data.json      # containing all event type labels 
+    │   ├── event_dict_label_data.json          # containing all event type labels 
     │   ├── event_dict_on_doc_train.json	# for training
     │   ├── event_dict_on_doc_test.json		# for testing
     │   └── event_dict_on_doc_valid.json	# for validation

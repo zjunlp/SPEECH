@@ -31,7 +31,7 @@ SPEECH
 ├── data_utils.py       # for data processing
 ├── speech.py		        # main model (bert serves as the backbone)
 ├── speech_distilbert.py	# main model (distilbert serves as the backbone)
-├── speech_roberta.py               # toy model (roberta serves as the backbone, not adopted in the paper, just for reference)
+├── speech_roberta.py           # toy model (roberta serves as the backbone, not adopted in the paper and just for reference)
 ├── run_speech.py	# for model running
 ├── run_speech.sh	# bash file for model running 
 └── Datasets		    # data

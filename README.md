@@ -202,10 +202,10 @@ We also add a NA relation to signify no relation between the event mention pair 
                Ningyu Zhang and
                Bryan Hooi},
   title       = {SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres},
-  booktitle   = {Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)},
+  booktitle   = {{ACL} {(1)}},
   publisher   = {Association for Computational Linguistics},
-  pages       = {},
+  pages       = {351--363},
   year        = {2023},
-  url         = {https://arxiv.org/abs/2305.13617}
+  url         = {https://aclanthology.org/2023.acl-long.21/}
 }
 ```

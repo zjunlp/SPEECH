@@ -5,7 +5,7 @@
 </p>
 
 
-🍎 The project is an official implementation for [**SPEECH**](https://github.com/zjunlp/SPEECH) model and a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) dataset, which has firstly been proposed in the paper [💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres](https://arxiv.org/abs/2305.13617) accepted by ACL 2023 main conference. 
+🍎 The project is an official implementation for [**SPEECH**](https://github.com/zjunlp/SPEECH) model and a repository for [**OntoEvent-Doc**](https://github.com/zjunlp/SPEECH/tree/main/Datasets/OntoEvent-Doc.zip) dataset, which has firstly been proposed in the paper [💬SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres](https://aclanthology.org/2023.acl-long.21/) accepted by ACL 2023 main conference. 
 
 🖥️ We also release the [poster](https://github.com/zjunlp/SPEECH/tree/main/ACL2023@Poster_Speech.pdf) and [slides](https://github.com/zjunlp/SPEECH/tree/main/ACL2023@Slides_Speech.pdf) for better understanding of this paper. 
 
@@ -198,9 +198,9 @@ We also add a NA relation to signify no relation between the event mention pair 
 ```bibtex
 @inproceedings{ACL2023_SPEECH,
     author    = {Shumin Deng and
-               Shengyu Mao and
-               Ningyu Zhang and
-               Bryan Hooi},
+                 Shengyu Mao and
+                 Ningyu Zhang and
+                 Bryan Hooi},
   title       = {SPEECH: Structured Prediction with Energy-Based Event-Centric Hyperspheres},
   booktitle   = {{ACL} {(1)}},
   publisher   = {Association for Computational Linguistics},
